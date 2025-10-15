@@ -127,7 +127,7 @@ Think of a **payment terminal** that supports multiple payment cards/apps:
 
 * Overkill if you only have two simple branches that will never change.
 * Don’t create too many tiny strategy classes — consider using lambdas or registration maps for compactness.
-* If strategies need to share state, manage lifecycle carefully (stateless strategies are easier).
+* If strategies need to share abstractState, manage lifecycle carefully (stateless strategies are easier).
 
 ---
 
@@ -143,7 +143,7 @@ Think of a **payment terminal** that supports multiple payment cards/apps:
 
 * **Strategy Registry**: map keys → strategy implementations (useful for runtime lookup/config).
 * **Factory + Strategy**: combine with a factory to create strategies based on config.
-* **State Pattern**: when strategies also represent states and transitions, consider State pattern (behavior depends on current state and transitions).
+* **State Pattern**: when strategies also represent states and transitions, consider State pattern (behavior depends on current abstractState and transitions).
 
 ---
 

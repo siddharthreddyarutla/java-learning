@@ -163,7 +163,7 @@ public class Main {
 
 5. **When to use abstract class vs interface?**
 
-    * Abstract class → when classes share **state + behavior**.
+    * Abstract class → when classes share **abstractState + behavior**.
     * Interface → when you want a pure contract across unrelated classes.
 
 6. **What is marker interface?**

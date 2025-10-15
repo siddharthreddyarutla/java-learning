@@ -6,7 +6,7 @@ Java provides an enum called Thread.State which has 6 states.
 
 ## 1. NEW
 
-* A thread is in NEW state when it is created but not started.
+* A thread is in NEW abstractState when it is created but not started.
 * Created using new Thread().
 * Moves to RUNNABLE when start() is called.
 
@@ -32,13 +32,13 @@ System.out.println(t.getState()); // RUNNABLE (or maybe still NEW if checked too
 
 * A thread actually executes inside its run() method.
 * JVM thread scheduler picks it from RUNNABLE.
-* Only one thread per core can be in RUNNING state.
+* Only one thread per core can be in RUNNING abstractState.
 
 
 ## 4. WAITING
 
-* A thread is in WAITING state if it is waiting indefinitely for another thread to signal it.
-* Enters this state when you call wait() without timeout.
+* A thread is in WAITING abstractState if it is waiting indefinitely for another thread to signal it.
+* Enters this abstractState when you call wait() without timeout.
 * Comes back when another thread calls notify() / notifyAll().
 
 ## 5. TIMED_WAITING
@@ -54,7 +54,7 @@ System.out.println(t.getState()); // RUNNABLE (or maybe still NEW if checked too
 ## 6. TERMINATED
 
 * A thread dies after completing execution.
-* Once in this state, it cannot be restarted.
+* Once in this abstractState, it cannot be restarted.
 
 ```java
 Thread t = new Thread(() -> System.out.println("Thread finished"));

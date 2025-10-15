@@ -131,7 +131,7 @@ Think of a **stamp** or **photocopy machine**:
 ## 7) When to use
 
 * Object creation cost is **high**, but cloning is cheap.
-* You need to create many objects that share the same base state.
+* You need to create many objects that share the same base abstractState.
 * You want to **hide the complexity of creating objects** from the client.
 
 ---

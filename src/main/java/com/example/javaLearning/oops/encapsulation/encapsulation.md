@@ -4,7 +4,7 @@
 ## 1. Concept Overview
 
 * **Encapsulation** = **data hiding + controlled access**.
-* A class should **hide its internal state (fields)** and only expose controlled access through **methods (getters/setters)**.
+* A class should **hide its internal abstractState (fields)** and only expose controlled access through **methods (getters/setters)**.
 * Prevents accidental corruption of data and enforces rules.
 
 👉 Think of a **capsule medicine**: the drug (data) is hidden, you only interact with the capsule (methods).
@@ -142,7 +142,7 @@ public class Main {
 
 5. **What is an immutable class?**
 
-    * A class whose state cannot change after creation (fields are `private final`, no setters).
+    * A class whose abstractState cannot change after creation (fields are `private final`, no setters).
 
 ---
 

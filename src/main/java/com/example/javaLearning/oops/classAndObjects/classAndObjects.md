@@ -4,7 +4,7 @@
 ## 1. Concept Overview
 
 * **Class**: A **blueprint** (or template) that defines the structure (fields) and behavior (methods) of objects.
-* **Object**: A **real-world entity** created from a class. Each object has its own state (data) and can perform actions (methods).
+* **Object**: A **real-world entity** created from a class. Each object has its own abstractState (data) and can perform actions (methods).
 * **OOP starts here**: without classes and objects, no other OOP principle makes sense.
 
 ---
@@ -13,7 +13,7 @@
 
 * A class is declared using the `class` keyword.
 * Objects are created using the `new` keyword.
-* Fields → represent **state** (data).
+* Fields → represent **abstractState** (data).
 * Methods → represent **behavior** (functions).
 * A class can have multiple objects, each with its own copy of instance variables.
 * `this` keyword → refers to the current object.
@@ -28,7 +28,7 @@
 ```java
 // Car.java
 public class Car {
-    // Fields (state)
+    // Fields (abstractState)
     String brand;
     int speed;
 
@@ -116,7 +116,7 @@ Try these on your own (write full classes with `main()`):
 
 2. **What is an object?**
 
-    * An instance of a class with its own state and behavior.
+    * An instance of a class with its own abstractState and behavior.
 
 3. **How are objects stored in memory?**
 

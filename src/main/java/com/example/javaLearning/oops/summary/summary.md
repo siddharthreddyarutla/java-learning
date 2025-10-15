@@ -5,7 +5,7 @@
 ## 🔹 Module 1: Classes & Objects
 
 * **Class** = blueprint; **Object** = instance.
-* Fields → state; Methods → behavior.
+* Fields → abstractState; Methods → behavior.
 * `new` keyword → creates objects in heap.
 * `this` → refers to current object.
 

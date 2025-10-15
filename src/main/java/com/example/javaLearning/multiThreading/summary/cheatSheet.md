@@ -235,7 +235,7 @@ public void run() {
 
 # 🎯 Summary
 
-* Use **synchronized/locks** for shared mutable state.
+* Use **synchronized/locks** for shared mutable abstractState.
 * Use **Executors** instead of manual thread creation.
 * Use **CompletableFuture** for async pipelines.
 * Use **Concurrent collections / atomics** instead of manual sync when possible.

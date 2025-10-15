@@ -128,7 +128,7 @@ private Object readResolve() {
 
 ## 6) When **not** to use Singleton
 
-* Overuse leads to **global state** which increases coupling and makes testing harder.
+* Overuse leads to **global abstractState** which increases coupling and makes testing harder.
 * Prefer **dependency injection** (framework-managed singletons) for application services. Use patterns rather than raw singles for testability.
 * Avoid Singletons for business-logic objects that should be ephemeral or multiple per context.
 
@@ -160,7 +160,7 @@ private Object readResolve() {
 
 **Cons**
 
-* Global state — can hide dependencies and make testing difficult.
+* Global abstractState — can hide dependencies and make testing difficult.
 * Overuse leads to tight coupling and concurrency pitfalls if not done carefully.
 
 **Interview questions to expect**
@@ -178,7 +178,7 @@ private Object readResolve() {
 
 * Use **Initialization-on-demand holder** or **Enum** for correctness and simplicity.
 * Prefer **DI** (framework) singletons for application services to keep testable & decoupled.
-* Avoid uncontrolled global state — use singletons sparingly.
+* Avoid uncontrolled global abstractState — use singletons sparingly.
 
 ---
 

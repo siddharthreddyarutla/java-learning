@@ -31,7 +31,7 @@ The **Builder Pattern** separates the construction of a complex object from its 
   ...
   ```
 
-  Object can be in an **inconsistent state** until all setters are called.
+  Object can be in an **inconsistent abstractState** until all setters are called.
 
 ---
 

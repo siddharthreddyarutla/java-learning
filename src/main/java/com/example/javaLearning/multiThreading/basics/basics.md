@@ -121,7 +121,7 @@ CPU Cores (hardware executing threads)
 | **Unit of execution** | Process                                       | Thread (inside a process)                    |
 | **Memory**            | Each process has its own memory (heavyweight) | Threads share memory (lightweight)           |
 | **Isolation**         | Processes are independent                     | Threads are dependent (share data)           |
-| **Context switch**    | Expensive (save/restore entire process state) | Cheaper (just registers + stack)             |
+| **Context switch**    | Expensive (save/restore entire process abstractState) | Cheaper (just registers + stack)             |
 | **Communication**     | Inter-process communication (IPC) is complex  | Easier (shared memory)                       |
 | **Example**           | Running Chrome + Spotify + Word               | Inside Chrome → tabs, rendering, downloading |
 

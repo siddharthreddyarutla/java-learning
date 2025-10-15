@@ -64,7 +64,7 @@ public class ThreadPriorityDemo {
 
 * Thread.yield() → tells the scheduler:
   - “I am willing to give up my current CPU time slice.”
-* The thread goes back to RUNNABLE state, allowing equal/higher priority threads a chance.
+* The thread goes back to RUNNABLE abstractState, allowing equal/higher priority threads a chance.
 * Not guaranteed that it will immediately switch.
 
 ```java

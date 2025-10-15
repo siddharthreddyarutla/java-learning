@@ -4,7 +4,7 @@
 
 ## 1️⃣ Definition & Intent
 
-> The **Flyweight Pattern** is used to **minimize memory usage** by sharing common (intrinsic) state between multiple objects instead of creating duplicates.
+> The **Flyweight Pattern** is used to **minimize memory usage** by sharing common (intrinsic) abstractState between multiple objects instead of creating duplicates.
 
 It helps when you have **a large number of similar objects**, and storing all of them individually would consume too much memory.
 
@@ -20,7 +20,7 @@ e.g.:
 * Particles in a simulation.
 * Emojis or icons rendered repeatedly.
 
-👉 Instead of creating separate copies of repeating data, store shared data (intrinsic state) in a **shared object** and external data (extrinsic state) outside.
+👉 Instead of creating separate copies of repeating data, store shared data (intrinsic abstractState) in a **shared object** and external data (extrinsic abstractState) outside.
 
 ---
 

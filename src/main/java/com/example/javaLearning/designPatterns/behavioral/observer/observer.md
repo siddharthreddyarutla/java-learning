@@ -6,7 +6,7 @@ Nice — moving on! Below is a full module for the **Observer (Publish/Subscribe
 
 # 1. Quick summary (what & why)
 
-**Observer (Publish/Subscribe)** lets objects (Observers/subscribers) register to receive updates from another object (Subject/publisher) when its state changes. It decouples senders from receivers. Useful for event systems, UI notifications, caches, reactive flows, messaging between modules.
+**Observer (Publish/Subscribe)** lets objects (Observers/subscribers) register to receive updates from another object (Subject/publisher) when its abstractState changes. It decouples senders from receivers. Useful for event systems, UI notifications, caches, reactive flows, messaging between modules.
 
 Two flavors:
 
@@ -140,14 +140,14 @@ Notes:
 subject.notifyObservers(new PriceChangeEvent(symbol, newPrice));
 ```
 
-**Pull** (subject just signals and observers query state):
+**Pull** (subject just signals and observers query abstractState):
 
 ```java
 subject.notifyObservers(null);        // or a simple "changed" token
 // observer calls subject.getPrice(symbol)
 ```
 
-Use **push** when events carry all needed data and you want fewer fetches. Use **pull** when payloads are big and observers may want different slices of state.
+Use **push** when events carry all needed data and you want fewer fetches. Use **pull** when payloads are big and observers may want different slices of abstractState.
 
 ---
 

@@ -25,7 +25,7 @@ So yes ✅ — on the surface, they look interchangeable.
 ### 🔹 1. State (Fields)
 
 * **Abstract class**: can have **instance variables** (fields with values that vary per object).
-* **Interface**: can only have `public static final` constants (no instance state).
+* **Interface**: can only have `public static final` constants (no instance abstractState).
 
 **Example:**
 
@@ -40,13 +40,13 @@ interface AnimalInterface {
 }
 ```
 
-👉 If you want **state (fields)** in the base class → use **abstract class**.
+👉 If you want **abstractState (fields)** in the base class → use **abstract class**.
 
 ---
 
 ### 🔹 2. Constructors
 
-* **Abstract class**: can have **constructors** → useful for initializing state for subclasses.
+* **Abstract class**: can have **constructors** → useful for initializing abstractState for subclasses.
 * **Interface**: ❌ no constructors.
 
 **Example:**
@@ -88,26 +88,26 @@ class Car extends Vehicle {
 
 ### 🔹 5. Use-case Semantics
 
-* **Abstract class** → “is-a base type with shared code + state”.
+* **Abstract class** → “is-a base type with shared code + abstractState”.
 * **Interface** → “is-a capability/contract”.
 
 **Example:**
 
-* Abstract class: `Animal` (shared state like `name`, shared behavior like `breathe()`).
+* Abstract class: `Animal` (shared abstractState like `name`, shared behavior like `breathe()`).
 * Interface: `Flyable`, `Swimmable` (capabilities that can be added to many classes).
 
 ---
 
 ## 3. Real-World Justification
 
-### Example: **Abstract class (shared code + state)**
+### Example: **Abstract class (shared code + abstractState)**
 
 ```java
 abstract class Shape {
     protected String color;
 
     public Shape(String color) {
-        this.color = color; // constructor for common state
+        this.color = color; // constructor for common abstractState
     }
 
     abstract double area();
@@ -130,7 +130,7 @@ class Circle extends Shape {
 }
 ```
 
-👉 Here `Shape` provides **shared state (color)** and behavior.
+👉 Here `Shape` provides **shared abstractState (color)** and behavior.
 This cannot be done with only interfaces.
 
 ---
@@ -161,7 +161,7 @@ It just **adds capabilities** → **multiple interfaces supported**.
 
 * **Use abstract class when**:
 
-    * Classes are closely related and share **state + implementation**.
+    * Classes are closely related and share **abstractState + implementation**.
     * You want to provide **constructors** and **protected members**.
     * Example: `HttpServlet` in Java EE.
 
@@ -178,7 +178,7 @@ It just **adds capabilities** → **multiple interfaces supported**.
 👉 If asked *“Why use abstract class when interfaces can do almost everything?”*
 You can say:
 
-* Abstract classes are for **base classes with shared state + implementation**.
+* Abstract classes are for **base classes with shared abstractState + implementation**.
 * Interfaces are for **contracts or capabilities across unrelated classes**.
 * Example:
 
