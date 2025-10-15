@@ -1,4 +1,4 @@
-package com.example.javaLearning.designPatterns.Creational.factoryMethod;
+package com.example.javaLearning.designPatterns.creational.factoryMethod;
 
 public class FactoryMethod {
 

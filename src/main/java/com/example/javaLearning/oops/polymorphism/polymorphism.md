@@ -100,7 +100,7 @@ public class TestOverriding {
 
 ```java
 class Shape {
-    void draw() { System.out.println("Drawing shape"); }
+    void draw() { System.out.println("Drawing Shape"); }
 }
 
 class Circle extends Shape {

@@ -151,3 +151,18 @@ Think of a **stamp** or **photocopy machine**:
 1. Implement a `Shape` hierarchy (`Circle`, `Rectangle`) with a `clone()` method to duplicate shapes.
 2. Implement a `DatabaseConnection` prototype where cloning avoids re-parsing connection configs.
 3. Show difference between shallow copy and deep copy by cloning an object with a mutable `List`.
+
+
+## 10) Pros and Cons
+
+1. Pros:
+
+- You can clone objects without coupling to their concrete classes.
+- You can get rid of repeated initialization code in favor of cloning pre-built prototypes.
+- You can produce complex objects more conveniently.
+- You get an alternative to inheritance when dealing with configuration presets for complex objects.
+
+
+2. Cons:
+
+- Cloning complex objects that have circular references might be very tricky

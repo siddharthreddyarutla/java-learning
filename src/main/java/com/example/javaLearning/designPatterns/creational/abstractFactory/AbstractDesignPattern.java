@@ -1,4 +1,4 @@
-package com.example.javaLearning.designPatterns.Creational.abstractFactory;
+package com.example.javaLearning.designPatterns.creational.abstractFactory;
 
 
 public class AbstractDesignPattern {

@@ -1,10 +1,9 @@
-package com.example.javaLearning.designPatterns.Creational.singleton;
+package com.example.javaLearning.designPatterns.creational.singleton;
 
 
 import java.io.Serializable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Singleton {

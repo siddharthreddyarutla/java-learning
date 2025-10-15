@@ -95,7 +95,7 @@ abstract class Shape {
 
     // Concrete method (shared by all)
     public void display() {
-        System.out.println("This is a shape.");
+        System.out.println("This is a Shape.");
     }
 }
 
@@ -124,10 +124,10 @@ public class Main {
         Shape s1 = new Circle(5);
         Shape s2 = new Rectangle(4, 6);
 
-        s1.display(); // This is a shape.
+        s1.display(); // This is a Shape.
         System.out.println("Circle area: " + s1.area());
 
-        s2.display(); // This is a shape.
+        s2.display(); // This is a Shape.
         System.out.println("Rectangle area: " + s2.area());
     }
 }

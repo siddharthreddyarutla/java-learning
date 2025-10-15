@@ -1,4 +1,4 @@
-package com.example.javaLearning.designPatterns.Creational.builder;
+package com.example.javaLearning.designPatterns.creational.builder;
 
 import lombok.Builder;
 import lombok.ToString;
@@ -19,6 +19,10 @@ public class BuilderPattern {
         new UserClass.UserClassCustomBuilder().firstName("Sid").lastName("arutla").age(24)
             .email("#gmail.com").phone("123").occupation("software").build();
     System.out.println(userClass.toString());
+    // We can just use specific fields which are required, like below
+    UserClass userClass1 =
+        new UserClass.UserClassCustomBuilder().firstName("Sid").lastName("arutla").build();
+    System.out.println(userClass1.toString());
   }
 
   // Using lombok builder to avoid boilerplate code
@@ -68,7 +72,7 @@ public class BuilderPattern {
       }
 
       public UserClassCustomBuilder lastName(String lastName) {
-        this.firstName = firstName;
+        this.lastName = lastName;
         return this;
       }
 
@@ -88,7 +92,7 @@ public class BuilderPattern {
       }
 
       public UserClassCustomBuilder occupation(String occupation) {
-        this.occupation = firstName;
+        this.occupation = occupation;
         return this;
       }
 

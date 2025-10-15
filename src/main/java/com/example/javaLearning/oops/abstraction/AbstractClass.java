@@ -42,7 +42,7 @@ public class AbstractClass {
 
     public void establishConnection() {
       System.out.println(connectionUrl());
-      System.out.println("DatabaseHandler: Connection successful");
+      System.out.println("DatabaseHandler: DatabaseConnection successful");
     }
 
     public void prepareStatement() {
@@ -92,7 +92,7 @@ public class AbstractClass {
     @Override
     public void establishConnection() {
       System.out.println(connectionUrl());
-      System.out.println("MongoHandler: Connection successful");
+      System.out.println("MongoHandler: DatabaseConnection successful");
     }
   }
 }

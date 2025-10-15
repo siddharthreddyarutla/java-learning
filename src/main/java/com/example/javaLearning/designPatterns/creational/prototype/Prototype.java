@@ -1,4 +1,4 @@
-package com.example.javaLearning.designPatterns.Creational.prototype;
+package com.example.javaLearning.designPatterns.creational.prototype;
 
 public class Prototype {
 
@@ -109,7 +109,7 @@ public class Prototype {
 
     @Override
     public String toString() {
-      return "Rectangle [x = " + this.x + ", y = " + this.y + ", colour = " + this.colour
+      return "Circle [x = " + this.x + ", y = " + this.y + ", colour = " + this.colour
           + ", radius = " + this.radius + "]";
     }
   }

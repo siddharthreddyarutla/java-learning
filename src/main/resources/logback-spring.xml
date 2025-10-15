@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+    <!-- read spring properties if set, else fallback -->
+    <springProperty name="LOG_LEVEL_PATTERN" source="logging.pattern.level" default="%-5level"/>
+    <springProperty name="LOG_PATH" source="logging.path" default="./logs"/>
+    <springProperty name="LOG_FILE_NAME" source="logging.file.name" default="application.log"/>
+
+    <property name="LOG_FILE" value="${LOG_PATH}/${LOG_FILE_NAME}"/>
+    <property name="FILE_NAME_PREFIX" value="application"/>
+
+    <!-- Console appender -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] ${LOG_LEVEL_PATTERN} [Tracking-ID:%X{LOG-TRACKING-ID}] [User-ID:%X{USER-ID}] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Rolling file appender: ACTIVE file is fixed; rotated files use %d -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- Active file (must be a concrete path - no %d here) -->
+        <file>${LOG_FILE}</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${FILE_NAME_PREFIX}.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>14</maxHistory>
+            <!-- optional total size cap
+            <totalSizeCap>2GB</totalSizeCap>
+            -->
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] ${LOG_LEVEL_PATTERN} [Tracking-ID:%X{LOG-TRACKING-ID}] [User-ID:%X{USER-ID}] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>

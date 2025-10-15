@@ -173,3 +173,18 @@ Think of an **electronics store** that sells product *sets* for regions.
 
 * In modern applications with DI frameworks, often you don’t write explicit factory classes — you register families of beans and select which family to wire (profiles, qualifiers, configuration). The abstract factory pattern maps naturally to DI configuration.
 * Another approach is **factory + registration**: a registry of factories keyed by family id (useful when adding families as plugins).
+
+
+## 11) Pros and Cons
+
+1. Pros:
+
+- You can be sure that the products you’re getting from a factory are compatible with each other.
+- You avoid tight coupling between concrete products and client code.
+- Single Responsibility Principle. You can extract the product creation code into one place, making the code easier to support.
+- Open/Closed Principle. You can introduce new variants of products without breaking existing client code.
+
+
+2. Cons:
+
+- The code may become more complicated than it should be, since a lot of new interfaces and classes are introduced along with the pattern.
