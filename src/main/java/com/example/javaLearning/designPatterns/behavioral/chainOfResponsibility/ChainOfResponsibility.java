@@ -31,7 +31,7 @@ public class ChainOfResponsibility {
   public static class InfoLogger extends Handler {
     public void handle(String request) {
       if (request.equals("INFO")) {
-        System.out.println("INFO: Logging info message");
+        System.out.println("INFO: Logging mode message");
       } else if (next != null) {
         next.handle(request);
       }

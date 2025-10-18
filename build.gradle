@@ -28,6 +28,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -35,6 +36,22 @@ dependencies {
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	runtimeOnly 'mysql:mysql-connector-java:8.0.33'
+
+	// Lombok
+	compileOnly 'org.projectlombok:lombok:1.18.30'
+	annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+	// MapStruct
+	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+	// THIS is the binding that makes them work together
+	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+
+	//kafka
+//	implementation("org.springframework.kafka:spring-kafka:2.9.13")
+	implementation 'org.springframework.kafka:spring-kafka'
+	implementation("org.apache.kafka:kafka-clients:3.5.0")
 }
 
 tasks.named('test') {

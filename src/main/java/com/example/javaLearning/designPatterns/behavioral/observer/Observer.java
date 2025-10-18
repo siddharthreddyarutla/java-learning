@@ -2,6 +2,7 @@ package com.example.javaLearning.designPatterns.behavioral.observer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.event.EventListener;
@@ -10,13 +11,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 public class Observer {
 
   public static void main(String[] args) {
-    // Start Spring context so @Component and @EventListener are active
+    // Start Spring context so @Component and @EventListenerImpl are active
     ConfigurableApplicationContext ctx = SpringApplication.run(Observer.class, args);
 
     RunObserverSynchronous.run(ctx);
@@ -80,11 +80,12 @@ public class Observer {
 
 
   @Component
-  public static class LogPublisher {
+  public static class LogPublisher extends ApplicationEvent {
 
     private final ApplicationEventPublisher applicationEventPublisher;
 
     public LogPublisher(ApplicationEventPublisher applicationEventPublisher) {
+      super(applicationEventPublisher);
       this.applicationEventPublisher = applicationEventPublisher;
     }
 
@@ -122,7 +123,7 @@ public class Observer {
     @Override
     public void Log(LogInfo logInfo) {
       System.out.println(
-          "Log type issue is: " + logInfo.logType + " and log info is: " + logInfo.info);
+          "Log type issue is: " + logInfo.logType + " and log mode is: " + logInfo.info);
     }
   }
 }
