@@ -1,5 +1,6 @@
 package com.example.javaLearning.kafka.producer.Impl;
 
+import com.example.javaLearning.kafka.KafkaPropertiesConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -15,7 +16,7 @@ public class Producer {
 
     ConfigurableApplicationContext ctx = SpringApplication.run(Producer.class, args);
     ProduceEvent produceEvent = ctx.getBean(ProduceEvent.class);
-    produceEvent.produce("test_topic", "Hi again from java application");
+    produceEvent.produce("replicated_topic", "Hi again from java application");
   }
 
   @Service

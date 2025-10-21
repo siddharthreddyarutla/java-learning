@@ -1,6 +1,6 @@
 package com.example.javaLearning;
 
-import com.example.javaLearning.kafka.producer.Impl.KafkaPropertiesConfig;
+import com.example.javaLearning.kafka.KafkaPropertiesConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
