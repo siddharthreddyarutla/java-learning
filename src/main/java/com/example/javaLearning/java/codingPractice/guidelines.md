@@ -83,3 +83,6 @@
 
 
 28. **Oops**, **SOLID**, **Design patterns**
+
+
+29. Event listener for decoupling 

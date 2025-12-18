@@ -1,0 +1,488 @@
+{#
+=============================================================================
+NGINX CONFIGURATION DOCUMENTATION FOR PEOPLEHUM
+=============================================================================
+This template explains the nginx configuration architecture and how it works
+#}
+
+{# ========================================================================
+   GLOBAL CONFIGURATION SECTION
+   ======================================================================== #}
+
+{% set global_config = {
+    'user': 'nginx',
+    'worker_processes': 'auto',
+    'error_log': '/var/log/nginx/error.log',
+    'worker_connections': 4096
+} %}
+
+{#
+GLOBAL SETTINGS EXPLANATION:
+- user nginx: Runs nginx worker processes as 'nginx' user for security
+- worker_processes auto: Automatically sets workers based on CPU cores
+- worker_connections 4096: Each worker can handle 4096 concurrent connections
+- Total capacity: auto_cores × 4096 connections
+#}
+
+
+{# ========================================================================
+   HTTP BLOCK CONFIGURATION
+   ======================================================================== #}
+
+{% set http_config = {
+    'log_format': 'Logs: IP, time, request, status, bytes, time, referer, user-agent, forwarded-for, cookie',
+    'proxy_read_timeout': '3600s (1 hour)',
+    'fastcgi_read_timeout': '3600s (1 hour)',
+    'resolver': '10.0.0.2 (Internal DNS, cache 10s)',
+    'sendfile': 'off (Disables zero-copy for compatibility)',
+    'keepalive_timeout': '65s',
+    'server_tokens': 'off (Hides nginx version for security)'
+} %}
+
+{#
+HTTP CONFIGURATION EXPLANATION:
+- Custom log format captures detailed request information including cookies
+- Long timeouts (1 hour) for API requests and long-running operations
+- Internal DNS resolver for dynamic upstream resolution
+- Server tokens disabled to hide nginx version from attackers
+#}
+
+
+{# ========================================================================
+   GZIP COMPRESSION CONFIGURATION
+   ======================================================================== #}
+
+{% set gzip_config = {
+    'enabled': true,
+    'min_length': '1024 bytes',
+    'compression_level': 4,
+    'types': [
+        'text/plain',
+        'text/css',
+        'application/javascript',
+        'application/x-javascript',
+        'application/xml+rss',
+        'application/pdf'
+    ],
+    'disabled_for': 'MSIE 6 and below'
+} %}
+
+{#
+GZIP COMPRESSION:
+- Compresses responses over 1KB to reduce bandwidth
+- Level 4 compression (balance between speed and size)
+- Only compresses specific MIME types (not images/videos)
+- Disabled for old IE browsers due to bugs
+#}
+
+
+{# ========================================================================
+   SECURITY HEADERS
+   ======================================================================== #}
+
+{% set security_headers = {
+    'HSTS': 'Strict-Transport-Security: max-age=31536000; includeSubDomains',
+    'XSS_Protection': 'X-XSS-Protection: 1; mode=block',
+    'purpose': 'Forces HTTPS for 1 year, prevents XSS attacks'
+} %}
+
+{#
+SECURITY HEADERS EXPLAINED:
+- HSTS: Forces browser to use HTTPS for 1 year (31536000 seconds)
+- includeSubDomains: Applies to all subdomains
+- XSS Protection: Enables browser's XSS filter
+#}
+
+
+{# ========================================================================
+   UUID TRACKING SYSTEM
+   ======================================================================== #}
+
+{% set tracking_system = {
+    'header': 'X-PH-Tracking-ID',
+    'logic': 'Uses X-Request-ID from client OR generates new request_id',
+    'purpose': 'Track requests across distributed systems'
+} %}
+
+{#
+UUID TRACKING:
+map $http_x_request_id $uuid {
+  default   "${request_id}";     # Generate new ID if not provided
+  ~*        "${http_x_request_id}";  # Use client's ID if exists
+}
+- Allows request tracing through microservices
+- Client can send X-Request-ID or nginx generates one
+- Added to both request (proxy_set_header) and response (add_header)
+#}
+
+
+{# ========================================================================
+   UPSTREAM CONFIGURATION
+   ======================================================================== #}
+
+{% set upstream = {
+    'name': 'email-sync-service-callback',
+    'method': 'least_conn (least connections algorithm)',
+    'servers': [
+        {
+            'address': 'ph-app3.peoplehum.local:8123',
+            'max_fails': 3,
+            'fail_timeout': '60s',
+            'weight': 1
+        }
+    ]
+} %}
+
+{#
+UPSTREAM LOAD BALANCING:
+- least_conn: Routes to server with fewest active connections
+- max_fails=3: Mark server down after 3 failed attempts
+- fail_timeout=60: Try again after 60 seconds
+- weight=1: Equal distribution (if multiple servers exist)
+#}
+
+
+{# ========================================================================
+   DOMAIN CONFIGURATIONS
+   ======================================================================== #}
+
+{% set domains = [
+    {
+        'name': 'peoplehum.com',
+        'purpose': 'Main domain - redirects to HTTPS',
+        'ssl': true,
+        'redirect': 'Forces HTTPS on both HTTP and HTTPS (canonical redirect)'
+    },
+    {
+        'name': 'customer.peoplehum.com',
+        'purpose': 'Customer portal',
+        'backend': 'CloudFront proxy (cop.peoplehum.com)',
+        'api_backend': 'alb.peoplehum.local:1924',
+        'features': [
+            'API proxy at /api/*',
+            'API-COP proxy at /apicop/*',
+            'Main content proxied from cop.peoplehum.com'
+        ]
+    },
+    {
+        'name': 'api.peoplehum.com',
+        'purpose': 'API Gateway',
+        'backend': 'alb.peoplehum.local:1924',
+        'special_handling': [
+            'WebSocket support for /api/mobile/maria-hill/*',
+            'Blocks swagger-ui.html and api-docs for security'
+        ]
+    },
+    {
+        'name': 'portal.peoplehum.com',
+        'purpose': 'Main portal',
+        'backend': 'alb.peoplehum.local:1925',
+        'features': [
+            'API backend: port 1924',
+            'WebSocket: maria-hill (port 1941)',
+            'Email sync callback: ph-app3:8123',
+            'Apple app site association files'
+        ]
+    },
+    {
+        'name': 'hris.peoplehum.com',
+        'purpose': 'HR Information System',
+        'backend': 'CloudFront (d55yd19jgcns4.cloudfront.net)',
+        'special': [
+            'E-sign UI from S3: prod-esign-ui.s3',
+            'Blocks /api/esign-service/v1/* for security',
+            'Cache control disabled for /esign/'
+        ]
+    },
+    {
+        'name': 'hire.peoplehum.com',
+        'purpose': 'Recruitment portal',
+        'backend': 'alb.peoplehum.local:1956'
+    },
+    {
+        'name': 'webapi.peoplehum.com',
+        'purpose': 'Web API endpoint',
+        'backend': 'alb.peoplehum.local:1924'
+    },
+    {
+        'name': 'bot.peoplehum.com',
+        'purpose': 'Chatbot service',
+        'backend': 'alb.peoplehum.local:1952'
+    },
+    {
+        'name': 'leads.peoplehum.com',
+        'purpose': 'Lead generation/public services',
+        'backend': 'alb.peoplehum.local:1961'
+    },
+    {
+        'name': 'devapi.peoplehum.com',
+        'purpose': 'Developer API with rate limiting',
+        'backend': 'alb.peoplehum.local:1959',
+        'rate_limit': {
+            'per_ip': '20 requests/second (burst 20)',
+            'per_customer': '20 requests/second (burst 20)',
+            'status_code': 429
+        }
+    },
+    {
+        'name': 'connect.peoplehum.com',
+        'purpose': 'Connect service',
+        'backend': 'alb.peoplehum.local:1925'
+    },
+    {
+        'name': 'sales.peoplehum.com',
+        'purpose': 'Sales portal',
+        'backend': 'alb.peoplehum.local:1983'
+    },
+    {
+        'name': 'support.peoplehum.com',
+        'purpose': 'Support portal',
+        'backend': 'alb.peoplehum.local:2000'
+    }
+] %}
+
+
+{# ========================================================================
+   RATE LIMITING CONFIGURATION
+   ======================================================================== #}
+
+{% set rate_limiting = {
+    'zones': [
+        {
+            'name': 'mylimit',
+            'key': '$binary_remote_addr (client IP)',
+            'size': '10m',
+            'rate': '20 requests/second'
+        },
+        {
+            'name': 'CUSTOMER_ID',
+            'key': '$customer_id (extracted from URL)',
+            'size': '10m',
+            'rate': '20 requests/second'
+        }
+    ],
+    'extraction_logic': 'Uses regex to extract customer ID from /customer/{id} or /customerId/{id}'
+} %}
+
+{#
+RATE LIMITING EXPLAINED:
+- Binary IP address saves ~4x memory vs string IP
+- 10MB zone can store ~160,000 IP addresses
+- burst=20: Allows 20 requests to queue if limit exceeded
+- nodelay: Process burst requests immediately
+- Returns HTTP 429 (Too Many Requests) when exceeded
+
+Customer ID Extraction:
+if ($request_uri ~* /customer/([0-9]+)){
+    set $customer_id $1;
+}
+- Extracts numeric customer ID from URL
+- Applies separate rate limit per customer
+#}
+
+
+{# ========================================================================
+   PROXY CONFIGURATION PATTERNS
+   ======================================================================== #}
+
+{% set proxy_patterns = {
+    'regex_location': {
+        'example': 'location ~ ^/api/(.*)',
+        'explanation': 'Captures everything after /api/ and passes to backend',
+        'backend_format': 'http://$alb:1924/$1$is_args$args',
+        'notes': '$1 = captured group, $is_args = ?, $args = query string'
+    },
+    'buffer_settings': {
+        'proxy_buffer_size': '128k',
+        'proxy_buffers': '4 256k (4 buffers of 256k each)',
+        'proxy_busy_buffers_size': '256k',
+        'purpose': 'Handles large API responses without disk I/O'
+    },
+    'websocket_support': {
+        'headers': [
+            'proxy_http_version 1.1',
+            'proxy_set_header Upgrade $http_upgrade',
+            'proxy_set_header Connection "upgrade"'
+        ],
+        'used_for': 'Socket.IO long polling (maria-hill service)'
+    }
+} %}
+
+
+{# ========================================================================
+   SSL/TLS CONFIGURATION
+   ======================================================================== #}
+
+{% set ssl_config = {
+    'protocols': 'TLSv1.2 only',
+    'certificate': '/etc/ssl/bundle.crt',
+    'certificate_key': '/etc/ssl/peoplehum.key',
+    'session_timeout': '5 minutes',
+    'security_note': 'TLSv1.0 and TLSv1.1 disabled for security'
+} %}
+
+
+{# ========================================================================
+   ERROR HANDLING
+   ======================================================================== #}
+
+{% set error_handling = {
+    'custom_page': '/ph_error.html',
+    'status_codes': 'All 4xx and 5xx errors',
+    'location': '/usr/share/nginx/html/ph_error.html',
+    'internal': true,
+    'note': 'internal directive prevents direct access to error page'
+} %}
+
+
+{# ========================================================================
+   SPECIAL FEATURES BY DOMAIN
+   ======================================================================== #}
+
+{% set special_features = {
+    'customer.peoplehum.com': {
+        'proxy_chain': 'Nginx → CloudFront (cop.peoplehum.com)',
+        'cors': 'Access-Control-Allow-Origin: * enabled',
+        'cookie_handling': 'Sets __session cookie from token'
+    },
+    'portal.peoplehum.com': {
+        'email_sync': 'Dedicated upstream for Gmail sync callbacks',
+        'terms_redirect': '/terms-of-service → peoplehum.com/termsofuse'
+    },
+    'hris.peoplehum.com': {
+        'cache_control': 'Disabled for /esign/ (always fresh)',
+        'url_rewrite': 'All esign URLs → /esign/index.html (SPA routing)'
+    },
+    'devapi.peoplehum.com': {
+        'rate_limiting': 'Two-tier: by IP and by customer ID',
+        'extraction': 'Regex extracts customer ID from URL path'
+    }
+} %}
+
+
+{# ========================================================================
+   ARCHITECTURE DIAGRAM
+   ======================================================================== #}
+
+{#
+REQUEST FLOW:
+
+Client Browser
+     ↓
+HTTP (port 80) → 301 Redirect → HTTPS (port 443)
+     ↓
+SSL Termination (nginx)
+     ↓
+Security Headers Added
+     ↓
+UUID Tracking Added
+     ↓
+Rate Limiting Check (if applicable)
+     ↓
+Location Matching (regex/exact)
+     ↓
+     ├─→ Blocked? → 404
+     ├─→ Static Content → CloudFront/S3
+     ├─→ API Request → ALB (load balancer)
+     ├─→ WebSocket → Upgrade connection
+     └─→ Email Callback → Dedicated upstream
+          ↓
+Backend Services (various ports on ALB)
+     ↓
+Response → Gzip Compression
+     ↓
+Add Headers (HSTS, tracking, etc.)
+     ↓
+Client Browser
+#}
+
+
+{# ========================================================================
+   SECURITY MEASURES SUMMARY
+   ======================================================================== #}
+
+{% set security_measures = [
+    'HTTPS enforcement (301 redirects)',
+    'HSTS header (1 year, includes subdomains)',
+    'XSS Protection header',
+    'Server version hiding (server_tokens off)',
+    'Swagger UI blocking (prevents API documentation exposure)',
+    'Rate limiting (prevents abuse)',
+    'TLSv1.2 only (no old vulnerable protocols)',
+    'Custom error pages (hides backend details)',
+    'IP-based access control (leads.peoplehum.com)',
+    'E-sign API endpoint blocking'
+] %}
+
+
+{# ========================================================================
+   BACKEND PORT MAPPING
+   ======================================================================== #}
+
+{% set port_mapping = {
+    '1924': 'Main API Gateway',
+    '1925': 'Portal/Connect UI',
+    '1941': 'Maria-Hill WebSocket Service',
+    '1952': 'Bot Service',
+    '1956': 'Hire/Recruitment Service',
+    '1959': 'Developer API',
+    '1961': 'Leads/Public Services',
+    '1983': 'Sales Portal',
+    '2000': 'Support Portal',
+    '8123': 'Email Sync Callback (ph-app3 server)'
+} %}
+
+
+{# ========================================================================
+   MAINTENANCE MODE (COMMENTED OUT)
+   ======================================================================== #}
+
+{#
+MAINTENANCE MODE:
+Several domains have commented maintenance mode:
+    #return 200 'We Are Currently Under Maintenance';
+    #add_header Content-Type text/plain;
+
+To enable:
+1. Uncomment these lines
+2. Comment out proxy_pass directives
+3. Reload nginx: nginx -s reload
+#}
+
+
+{# ========================================================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================================================== #}
+
+{% set performance = {
+    'gzip': 'Reduces bandwidth by ~70% for text',
+    'sendfile': 'Off (compatibility over speed)',
+    'tcp_nopush': 'On (sends headers and file in one packet)',
+    'tcp_nodelay': 'On (disables Nagle algorithm)',
+    'keepalive': '65s (reuses connections)',
+    'resolver_cache': '10s (caches DNS lookups)',
+    'long_timeouts': '1 hour (supports long operations)',
+    'large_buffers': 'Prevents disk I/O for big responses'
+} %}
+
+
+{# ========================================================================
+   CONFIGURATION BEST PRACTICES OBSERVED
+   ======================================================================== #}
+
+{% set best_practices = [
+    'Consistent security headers across all domains',
+    'Centralized SSL certificate management',
+    'Dynamic upstream resolution (set $alb variable)',
+    'Comprehensive error handling',
+    'Request tracking across services',
+    'Rate limiting on public APIs',
+    'Separate backends for different services',
+    'WebSocket support where needed',
+    'CORS headers for cross-origin requests',
+    'Load balancing with health checks'
+] %}
+
+{# ========================================================================
+   END OF DOCUMENTATION
+   ======================================================================== #}

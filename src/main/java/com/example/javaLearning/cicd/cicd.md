@@ -200,6 +200,14 @@ strategy:
     maxSurge: 1
 ```
 
+
+In peoplehum we use
+
+## Rolling Deployment with health-check-based rollback
+
+> We use a Rolling Deployment strategy where each node is upgraded one at a time. Ansible deploys to Node 1 first; if the deployment passes health checks, it proceeds to Node 2. If any node fails to update, the deployment is rolled back to the previous version.”
+
+
 ---
 
 ### 2️⃣ Blue-Green Deployment
@@ -352,7 +360,3 @@ A robust **CI/CD pipeline**:
 * Increases developer productivity
 * Promotes DevOps culture
 * Enables faster, safer, and more reliable releases
-
-**CI/CD is not just automation — it’s a mindset of continuous improvement.**
-
-```
