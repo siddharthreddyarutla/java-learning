@@ -17,4 +17,19 @@ public class jackson {
       System.out.println("Value: " + jsonParser.getText());
     }
   }
+
+  String output = """
+        Token: START_OBJECT
+      Value: {
+      Token: FIELD_NAME
+      Value: name
+      Token: VALUE_STRING
+      Value: John
+      Token: FIELD_NAME
+      Value: age
+      Token: VALUE_NUMBER_INT
+      Value: 30
+      Token: END_OBJECT
+      Value: }
+      """;
 }
