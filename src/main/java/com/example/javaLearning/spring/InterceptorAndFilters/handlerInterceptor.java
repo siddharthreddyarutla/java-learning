@@ -1,4 +1,4 @@
-package com.example.javaLearning.spring.webMvcInterceptor;
+package com.example.javaLearning.spring.InterceptorAndFilters;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Slf4j
 @Component
-public class Interceptor implements HandlerInterceptor {
+public class handlerInterceptor implements HandlerInterceptor {
 
   public static final String USER_ID = "USER-ID";
   public static final String LOG_TRACKING_ID = "LOG-TRACKING-ID";
@@ -24,7 +24,7 @@ public class Interceptor implements HandlerInterceptor {
       throws Exception {
 
     log.info(
-        "Interceptor: Request came to interceptor for appending userId and trackingId in the log");
+        "handlerInterceptor: Request came to interceptor for appending userId and trackingId in the log");
     String trackingId = request.getHeader(LOG_TRACKING_ID);
     String userId = request.getHeader(USER_ID);
 
@@ -40,7 +40,7 @@ public class Interceptor implements HandlerInterceptor {
   @Override
   public void afterCompletion(HttpServletRequest request, HttpServletResponse response,
       Object handler, @Nullable Exception ex) throws Exception {
-    log.info("Interceptor: Removing values from MDC");
+    log.info("handlerInterceptor: Removing values from MDC");
     MDC.remove(LOG_TRACKING_ID);
     MDC.remove(USER_ID);
   }

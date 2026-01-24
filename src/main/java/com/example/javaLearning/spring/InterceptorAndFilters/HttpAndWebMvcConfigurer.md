@@ -1,5 +1,5 @@
 
-* The `TrackingIdInterceptor` you shared earlier is a **Spring MVC interceptor** — it intercepts **server-side incoming HTTP requests** (from clients to your Spring app).
+* The `TrackingIdInterceptor` you shared earlier is a **Spring MVC handlerInterceptor** — it intercepts **server-side incoming HTTP requests** (from clients to your Spring app).
 * The code snippet you’ve shown now (using `OkHttpClient.Builder`) deals with **outgoing HTTP requests** — i.e., when your Spring service acts as a **client** making API calls to another service.
 
 Let’s unpack both sides clearly 👇
@@ -8,7 +8,7 @@ Let’s unpack both sides clearly 👇
 
 ## 🧩 1️⃣ For **Incoming Requests** (Server Side — `TrackingIdInterceptor`)
 
-When your Spring Boot app **receives** HTTP requests, you use a **Spring MVC interceptor** (like your `TrackingIdInterceptor`) to automatically attach or manage tracking IDs.
+When your Spring Boot app **receives** HTTP requests, you use a **Spring MVC handlerInterceptor** (like your `TrackingIdInterceptor`) to automatically attach or manage tracking IDs.
 
 ### ✅ To register it for all endpoints:
 
@@ -30,7 +30,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        // Register the interceptor for all endpoints
+        // Register the handlerInterceptor for all endpoints
         registry.addInterceptor(trackingIdInterceptor)
                 .addPathPatterns("/**"); // intercept all requests
     }

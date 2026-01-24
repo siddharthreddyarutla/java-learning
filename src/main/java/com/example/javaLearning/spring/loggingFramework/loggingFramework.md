@@ -14,7 +14,7 @@ This class `TrackingIdInterceptor` is a **Spring Boot `HandlerInterceptor`** tha
 public class TrackingIdInterceptor implements HandlerInterceptor
 ```
 
-* `@Component` — registers this class as a Spring Bean, so Spring can automatically add it to the interceptor chain.
+* `@Component` — registers this class as a Spring Bean, so Spring can automatically add it to the handlerInterceptor chain.
 * `@Slf4j` — Lombok annotation that provides a `log` object for logging (uses `org.slf4j.Logger`).
 * `HandlerInterceptor` — interface in Spring MVC that allows you to **intercept HTTP requests** before they reach the controller or after they complete.
 
