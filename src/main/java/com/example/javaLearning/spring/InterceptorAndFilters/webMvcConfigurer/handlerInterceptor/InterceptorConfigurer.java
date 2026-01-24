@@ -1,4 +1,4 @@
-package com.example.javaLearning.spring.InterceptorAndFilters;
+package com.example.javaLearning.spring.InterceptorAndFilters.webMvcConfigurer.handlerInterceptor;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

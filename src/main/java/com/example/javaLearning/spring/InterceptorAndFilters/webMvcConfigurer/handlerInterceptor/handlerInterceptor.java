@@ -1,4 +1,4 @@
-package com.example.javaLearning.spring.InterceptorAndFilters;
+package com.example.javaLearning.spring.InterceptorAndFilters.webMvcConfigurer.handlerInterceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

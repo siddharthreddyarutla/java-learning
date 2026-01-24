@@ -1,4 +1,4 @@
-package com.example.javaLearning.solidPrinciples.OCP;
+package com.example.javaLearning.LLD.solidPrinciples.OCP;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

@@ -1,4 +1,4 @@
-package com.example.javaLearning.solidPrinciples.SRP;
+package com.example.javaLearning.LLD.solidPrinciples.SRP;
 
 import lombok.RequiredArgsConstructor;
 

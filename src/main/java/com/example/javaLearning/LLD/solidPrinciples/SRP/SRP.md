@@ -166,15 +166,3 @@ Try this on a small class in your project — it should reduce the number of tes
 4. Give a scenario where splitting a class might be a bad idea (over-splitting). How do you decide?
 
 ---
-
-# Next modules (what's coming)
-
-* **Module 2 — OCP** (Open/Closed): we’ll show a common `switch`/`if-else` example and refactor to polymorphism with Java code and real-world analogy.
-* **Module 3 — LSP** (Liskov): we’ll demonstrate an inheritance misuse (e.g., `Bird.fly()` problem) and show proper interface segregation or hierarchy design.
-* **Module 4 — ISP** (Interface Segregation): we’ll take a bloated interface and split it into focused ones with Java examples.
-* **Module 5 — DIP** (Dependency Inversion): we’ll refactor concrete dependencies into abstractions and show how DI helps (manual + Spring example if you want).
-
----
-
-Would you like me to continue right now with **Module 2: Open/Closed Principle (OCP)** (full deep dive with Java examples, analogy, exercises, and interview questions)?
-(If yes I’ll go ahead and provide the full module next — otherwise tell me which module you prefer to do next and I’ll begin.)

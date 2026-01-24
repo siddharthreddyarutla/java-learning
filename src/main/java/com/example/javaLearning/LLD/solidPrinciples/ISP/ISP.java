@@ -1,4 +1,4 @@
-package com.example.javaLearning.solidPrinciples.ISP;
+package com.example.javaLearning.LLD.solidPrinciples.ISP;
 
 public class ISP {
 

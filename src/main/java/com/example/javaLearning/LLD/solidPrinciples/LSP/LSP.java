@@ -1,4 +1,4 @@
-package com.example.javaLearning.solidPrinciples.LSP;
+package com.example.javaLearning.LLD.solidPrinciples.LSP;
 
 public class LSP {
 

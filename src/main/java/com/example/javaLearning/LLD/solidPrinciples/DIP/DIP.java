@@ -1,4 +1,4 @@
-package com.example.javaLearning.solidPrinciples.DIP;
+package com.example.javaLearning.LLD.solidPrinciples.DIP;
 
 
 public class DIP {
