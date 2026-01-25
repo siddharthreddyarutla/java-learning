@@ -150,8 +150,3 @@ public class Main {
 ---
 
 ✅ Now, abstraction should feel **practical + interview clear**.
-
----
-
-👉 Do you want me to now continue with **Module 6: Method Overloading vs Method Overriding** in full detail,
-or prepare a **short cheat sheet for Abstraction** before moving ahead?

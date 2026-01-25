@@ -1,10 +1,4 @@
-# SOLID — what it is and **why** you should care (high-level + roadmap)
-
-Great — we'll take SOLID **step-by-step**, just like we did with core OOP. First: a focused, practical overview of **what SOLID is** and **why it's required**. Then I’ll walk you module-by-module (we’ll start with **SRP**) with Java code, real-world analogies, refactor examples, testability notes, exercises, and interview questions.
-
----
-
-# #1 What SOLID is (short)
+#1 What SOLID is (short)
 
 **SOLID** = five object-oriented design principles that help your code be:
 
@@ -71,20 +65,3 @@ When you see messy code, ask:
 * Do high-level modules depend on low-level concretes? → **DIP**
 
 If you answer “yes” to any, consider refactor patterns: extract class, extract interface, dependency injection, replace conditionals with polymorphism.
-
----
-
-# #6 Roadmap — how we will go module-by-module (in each module you'll get)
-
-For **each** SOLID principle I will give:
-
-* Definition + intent
-* Java **bad** example (simple, concrete)
-* Refactored **good** Java example (clean, compile-ready)
-* Real-world analogy
-* Unit-testing notes / how it helps testing
-* Small refactor exercise (to implement on your own)
-* Common pitfalls & code smells for that principle
-* 3–6 focused interview questions at the end
-
-We’ll proceed in order: **SRP → OCP → LSP → ISP → DIP**. You said step-by-step — I’ll start **immediately** with the first module: **Single Responsibility Principle**.

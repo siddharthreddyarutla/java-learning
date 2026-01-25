@@ -12,7 +12,7 @@
 ## ❌ BAD Example (violates DIP)
 
 ```java
-class MySQLDatab  ase {
+class MySQLDatabase {
     public void connect() {
         System.out.println("Connected to MySQL Database");
     }

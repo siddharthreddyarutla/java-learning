@@ -1,4 +1,4 @@
-package com.example.javaLearning.oops.encapsulation;
+package com.example.javaLearning.LLD.oops.encapsulation;
 
 public class Encapsulation {
 
@@ -39,7 +39,8 @@ public class Encapsulation {
         this.balance -= amount;
 
       } else {
-        System.out.println("low balance, current balance is: " + this.balance);
+        System.out.println(
+            "low balance, current balance is: " + this.balance + " withdraw balance is: " + amount);
       }
     }
   }

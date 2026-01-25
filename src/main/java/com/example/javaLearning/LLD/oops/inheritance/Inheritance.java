@@ -1,4 +1,4 @@
-package com.example.javaLearning.oops.inheritance;
+package com.example.javaLearning.LLD.oops.inheritance;
 
 public class Inheritance {
 

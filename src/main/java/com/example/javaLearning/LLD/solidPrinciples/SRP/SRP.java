@@ -18,7 +18,7 @@ public class SRP {
     System.out.println("Using single responsibility principle");
 
     RestaurantSRP restaurantSRP =
-        new RestaurantSRP(new Chiefs(), new Cleaner(), new CashierClass(), new Waiter());
+        new RestaurantSRP(new Chiefs(), new CleanerClass(), new CashierClass(), new Waiter());
     restaurantSRP.runRestaurant();
   }
 
@@ -124,7 +124,12 @@ public class SRP {
   }
 
 
-  public static class Cleaner {
+  public interface Cleaner {
+    void clean();
+  }
+
+
+  public static class CleanerClass implements Cleaner {
 
     public void clean() {
       System.out.println("Cleaner cleans");

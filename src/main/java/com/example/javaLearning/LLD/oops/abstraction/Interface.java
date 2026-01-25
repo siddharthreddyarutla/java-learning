@@ -1,4 +1,4 @@
-package com.example.javaLearning.oops.abstraction;
+package com.example.javaLearning.LLD.oops.abstraction;
 
 public class Interface {
 
