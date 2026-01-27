@@ -75,7 +75,7 @@ public class Observer {
 
 
   public interface Logger {
-    void Log(LogInfo logInfo);
+    void log(LogInfo logInfo);
   }
 
 
@@ -112,7 +112,7 @@ public class Observer {
 
     @EventListener
     public void consumeEvent(LogInfo logInfo) {
-      loggerService.Log(logInfo);
+      loggerService.log(logInfo);
     }
   }
 
@@ -121,7 +121,7 @@ public class Observer {
   public static class LoggerService implements Logger {
 
     @Override
-    public void Log(LogInfo logInfo) {
+    public void log(LogInfo logInfo) {
       System.out.println(
           "Log type issue is: " + logInfo.logType + " and log mode is: " + logInfo.info);
     }

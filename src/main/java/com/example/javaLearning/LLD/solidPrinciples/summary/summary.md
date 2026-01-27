@@ -84,12 +84,12 @@
 
 ---
 
-# 🧑‍💻 Interview Quickfire (one-liners)
+# ✅ SOLID Principles Summary
 
-1. **SRP** → One class, one reason to change.
-2. **OCP** → Extend without modifying existing code.
-3. **LSP** → Subclasses must honor parent contracts.
-4. **ISP** → Small, focused interfaces; no fat interfaces.
-5. **DIP** → Depend on abstractions, not concretes.
-
----
+| Principle | Core Idea                                   | Benefit                 |
+| --------- | ------------------------------------------- | ----------------------- |
+| **SRP**   | One class → one reason to change            | Maintainability         |
+| **OCP**   | Open for extension, closed for modification | Extensibility           |
+| **LSP**   | Subtypes must substitute base type safely   | Correctness             |
+| **ISP**   | Small, role-specific interfaces             | Flexibility             |
+| **DIP**   | Depend on abstractions, not concretes       | Decoupling, Testability |

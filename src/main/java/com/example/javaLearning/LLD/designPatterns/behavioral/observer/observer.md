@@ -1,8 +1,4 @@
-# Observer (Publish/Subscribe) — Java module (complete, step-by-step, MD notes for learning & interviews)
-
-Nice — moving on! Below is a full module for the **Observer (Publish/Subscribe)** pattern, laid out like your SOLID overview: concept, tradeoffs, UML/participants, detailed implementations (plain Java, thread-safe + async, Spring), code you can copy/run, pitfalls, best practices, and interview questions. Use this as a study note and implement side-by-side.
-
----
+# Observer (Publish/Subscribe)
 
 # 1. Quick summary (what & why)
 

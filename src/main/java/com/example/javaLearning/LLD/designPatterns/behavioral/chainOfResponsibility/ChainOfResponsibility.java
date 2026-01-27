@@ -6,8 +6,9 @@ public class ChainOfResponsibility {
     Handler info = new InfoLogger();
     Handler debug = new DebugLogger();
     Handler error = new ErrorLogger();
+    Handler trace = new TraceLogger();
 
-    info.setNext(debug).setNext(error);
+    info.setNext(debug).setNext(error).setNext(trace);
 
     info.handle("INFO");
     info.handle("DEBUG");
@@ -53,7 +54,19 @@ public class ChainOfResponsibility {
   public static class ErrorLogger extends Handler {
     public void handle(String request) {
       if (request.equals("ERROR")) {
-        System.out.println("ERROR: Logging error message");
+        System.out.println("Logging error message");
+      } else if (next != null) {
+        next.handle(request);
+      } else {
+        System.out.println("No handler found for: " + request);
+      }
+    }
+  }
+
+  public static class TraceLogger extends Handler {
+    public void handle(String request) {
+      if (request.equals("TRACE")) {
+        System.out.println("TRACE: Logging trace message");
       } else if (next != null) {
         next.handle(request);
       } else {

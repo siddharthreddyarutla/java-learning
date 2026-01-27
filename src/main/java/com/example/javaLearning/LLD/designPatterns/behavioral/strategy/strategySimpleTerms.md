@@ -11,10 +11,12 @@ Strategy pattern lets you **change an algorithm’s behavior at runtime** by enc
 **Example (Java):**
 
 ```java
+// Strategy interface
 interface PaymentStrategy {
     void pay(int amount);
 }
 
+// Concrete Strategies
 class CreditCardPayment implements PaymentStrategy {
     public void pay(int amount) { System.out.println("Paid " + amount + " using Credit Card"); }
 }
@@ -23,12 +25,14 @@ class PayPalPayment implements PaymentStrategy {
     public void pay(int amount) { System.out.println("Paid " + amount + " using PayPal"); }
 }
 
+// Context
 class ShoppingCart {
     private PaymentStrategy paymentStrategy;
     void setPaymentStrategy(PaymentStrategy strategy) { this.paymentStrategy = strategy; }
     void checkout(int amount) { paymentStrategy.pay(amount); }
 }
 
+// Client Code
 public class StrategyExample {
     public static void main(String[] args) {
         ShoppingCart cart = new ShoppingCart();

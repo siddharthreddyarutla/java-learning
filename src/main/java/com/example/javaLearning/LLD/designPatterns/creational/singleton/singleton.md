@@ -181,5 +181,3 @@ private Object readResolve() {
 * Avoid uncontrolled global abstractState — use singletons sparingly.
 
 ---
-
-Would you like me to continue now with **Module 2 — Factory Method** (same detailed format), or would you prefer to try the Singleton exercises first and then I continue?

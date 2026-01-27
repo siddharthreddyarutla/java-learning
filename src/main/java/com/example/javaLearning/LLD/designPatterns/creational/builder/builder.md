@@ -11,7 +11,7 @@ The **Builder Pattern** separates the construction of a complex object from its 
 * When you have a class with **lots of fields** (some required, some optional), instead of telescoping constructors or tons of setters, you use a **builder** to construct the object step by step.
 
 ---
-
+[abstractFactory](..%2FabstractFactory)
 ## 2) Problem it solves
 
 * **Telescoping constructor problem**:

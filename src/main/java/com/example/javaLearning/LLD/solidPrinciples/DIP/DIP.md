@@ -175,15 +175,3 @@ class Notification {
 3. Why does DIP improve testability?
 4. In your project, where have you applied DIP?
 5. Can DIP ever be overused? (hint: unnecessary abstractions/interfaces).
-
----
-
-# ✅ SOLID Principles Summary
-
-| Principle | Core Idea                                   | Benefit                 |
-| --------- | ------------------------------------------- | ----------------------- |
-| **SRP**   | One class → one reason to change            | Maintainability         |
-| **OCP**   | Open for extension, closed for modification | Extensibility           |
-| **LSP**   | Subtypes must substitute base type safely   | Correctness             |
-| **ISP**   | Small, role-specific interfaces             | Flexibility             |
-| **DIP**   | Depend on abstractions, not concretes       | Decoupling, Testability |

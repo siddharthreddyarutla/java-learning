@@ -1,9 +1,3 @@
-Excellent questions 👏 — you’re asking the *right kind of questions* that separate someone who’s **just using Kafka** from someone who’s **mastering Kafka architecture deeply**.
-
-Let’s go through **each doubt one by one**, crystal clear and deeply explained with examples and visual breakdowns — you’ll have zero confusion by the end of this.
-
----
-
 # 🧩 Kafka Architecture Clarifications — Deep Dive
 
 ---
