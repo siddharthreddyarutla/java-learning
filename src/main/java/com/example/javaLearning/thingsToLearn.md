@@ -26,3 +26,4 @@
 24. Load balancing 
 25. Content Delivery Networks (CDNs)
 26. SSL/TLS basics
+27. Java memory model
