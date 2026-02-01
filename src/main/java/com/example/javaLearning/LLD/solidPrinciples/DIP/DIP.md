@@ -45,7 +45,7 @@ interface Database {
     void connect();
 }
 
-// Low-level implementations
+// Low-Level implementations
 class MySQLDatabase implements Database {
     @Override
     public void connect() {
@@ -60,7 +60,7 @@ class PostgreSQLDatabase implements Database {
     }
 }
 
-// High-level module depends on abstraction, not details
+// High-Level module depends on abstraction, not details
 class Application {
     private final Database database;
 

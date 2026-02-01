@@ -27,6 +27,7 @@ public class Proxy {
   public static class FileProxy {
 
     public final String fileName;
+    private File file;
 
     public FileProxy(String fileName) {
       this.fileName = fileName;
@@ -34,7 +35,7 @@ public class Proxy {
 
     public void viewFile(String role) {
       if (role == "ADMIN") {
-        File file = new File(fileName);
+        this.file = new File(fileName);
         file.viewFile();
       } else {
         System.out.println("Access denied");

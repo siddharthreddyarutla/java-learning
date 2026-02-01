@@ -109,7 +109,7 @@ public abstract class Shape {
         this.renderer = renderer;
     }
 
-    public abstract void draw(); // high-level operation
+    public abstract void draw(); // high-Level operation
     public abstract void resize(float factor);
 }
 

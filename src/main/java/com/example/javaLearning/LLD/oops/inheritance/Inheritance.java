@@ -44,7 +44,7 @@ public class Inheritance {
   }
 
 
-  // Multi level inheritance
+  // Multi Level inheritance
   public static class Maruti extends Car {
 
     private String mileage;

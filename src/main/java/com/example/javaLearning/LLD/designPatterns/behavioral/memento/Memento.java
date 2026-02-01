@@ -7,7 +7,7 @@ public class Memento {
   public static void main(String[] args) {
 
     TextEditor editor = new TextEditor();
-    TextOrganizer history = new TextOrganizer();
+    History history = new History();
 
     editor.addText("Hello ");
     history.save(editor.save()); // save state 1
@@ -15,17 +15,21 @@ public class Memento {
     editor.addText("World!");
     history.save(editor.save()); // save state 2
 
+    editor.addText("again!");
+    history.save(editor.save()); // save state 3
+
     System.out.println("Current text: " + editor.text);
 
     // Undo (restore previous state)
-    editor.restore(history.undoAll());
+    editor.restore(history.undo());
     System.out.println("After undo: " + editor.text);
 
     // Undo again
-    editor.restore(history.undoAll());
+    editor.restore(history.undo());
     System.out.println("After second undo: " + editor.text);
   }
 
+  // Memento
   public static class TextMemento {
 
     private final String text;
@@ -40,6 +44,7 @@ public class Memento {
   }
 
 
+  // Organiser
   public static class TextEditor {
 
     private String text = "";
@@ -53,12 +58,15 @@ public class Memento {
     }
 
     public void restore(TextMemento textMemento) {
-      this.text = textMemento.getTextMemento();
+      if (null != textMemento) {
+        this.text = textMemento.getTextMemento();
+      }
     }
   }
 
 
-  public static class TextOrganizer {
+  // cate taker
+  public static class History {
 
     private final Stack<TextMemento> historyOfMemento = new Stack<>();
 
@@ -66,11 +74,12 @@ public class Memento {
       historyOfMemento.push(textMemento);
     }
 
-    public TextMemento undoAll() {
-      if (!historyOfMemento.isEmpty()) {
-        return historyOfMemento.pop();
+    public TextMemento undo() {
+      if (historyOfMemento.size() <= 1) {
+        return historyOfMemento.peek();
       }
-      return null;
+      historyOfMemento.pop();
+      return historyOfMemento.peek();
     }
   }
 }

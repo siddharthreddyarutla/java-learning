@@ -1,7 +1,3 @@
-Here are **clear, interview-ready explanations** of **DRY, KISS, and YAGNI**, with **examples** and **when to apply them**.
-
----
-
 ## 🔹 DRY — *Don’t Repeat Yourself*
 
 **Meaning:**

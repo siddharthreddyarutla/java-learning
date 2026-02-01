@@ -309,7 +309,7 @@ public class UserController {
 -Xloggc:/var/log/gc.log
 
 # GC Logging (Java 9+)
--Xlog:gc*:file=/var/log/gc.log:time,uptime,level,tags
+-Xlog:gc*:file=/var/log/gc.log:time,uptime,Level,tags
 
 # Monitoring
 -XX:+HeapDumpOnOutOfMemoryError
