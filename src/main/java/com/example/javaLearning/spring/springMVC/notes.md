@@ -1,8 +1,3 @@
-Awesome 👍
-Let’s lock this in properly. I’ll explain **Spring MVC** in a **clean, structured, interview-ready way**, from **what it is → how it works → why it exists → how it differs from modern reactive**.
-
----
-
 # 🌱 What is Spring MVC?
 
 ### **Spring MVC is a web framework in Spring for building HTTP-based, server-side applications using the Model–View–Controller pattern.**

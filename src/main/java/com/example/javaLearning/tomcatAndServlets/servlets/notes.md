@@ -1,7 +1,3 @@
-Great questions — you’re now touching the **real internals** that separate “framework users” from people who *actually understand how the web stack works*.
-I’ll answer this **step-by-step**, from **raw HTTP bytes → controller method**, and I’ll explicitly clarify **Coyote**, **Servlets**, **DispatcherServlet**, **HandlerMapping**, and **how URL → controller happens**.
-
----
 
 ## 🧠 Big Picture First (mental model)
 

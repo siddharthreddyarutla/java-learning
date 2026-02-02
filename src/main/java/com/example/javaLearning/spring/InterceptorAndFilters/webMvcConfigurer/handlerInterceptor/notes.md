@@ -1,8 +1,3 @@
-Yes — your understanding is **100% correct now**, and your question is the *right* one to ask at this point.
-Let me clear the **last confusion** cleanly and crisply.
-
----
-
 ## 🔹 Why do we need `InterceptorConfigurer` if `HandlerInterceptor` already exists?
 
 ### Short answer (interview-ready):
