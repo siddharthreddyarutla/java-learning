@@ -48,6 +48,9 @@ Everything else flows from this.
 * No repeating groups
 * No lists inside a column
 
+Ex:
+Indivisible: The data cannot be logically subdivided. For example, a "Name" column might hold "John Doe", which is considered a single atomic value in this context. However, a column that holds "123 Main St, Springfield, IL 62701" is not atomic because it contains a street address, city, state, and ZIP code, which are meaningful individual components
+
 ---
 
 ### ❌ Bad Design (Violates 1NF)

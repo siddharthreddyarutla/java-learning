@@ -1,8 +1,6 @@
 package com.example.javaLearning.LLD.designPatterns.creational;
 
-import jakarta.persistence.Tuple;
 import lombok.Setter;
-import org.springframework.security.core.parameters.P;
 
 public class revision {
 

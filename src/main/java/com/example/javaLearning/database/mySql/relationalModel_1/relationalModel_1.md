@@ -1,8 +1,3 @@
-Perfect. Let’s move forward 🚀
-Now we start **building the mental model layer by layer**.
-
----
-
 # 🧩 STEP 1: RELATIONAL MODEL (WHY SQL WORKS)
 
 This step explains **why MySQL is relational**, why tables exist, and why SQL looks the way it does.

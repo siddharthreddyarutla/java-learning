@@ -1,10 +1,3 @@
-Love the momentum 🔥
-STEP 2 is **one of the most important steps in the entire journey**. Many engineers *use* MySQL for years without truly understanding this.
-
-We’ll go slow and precise.
-
----
-
 # 🧩 STEP 2: MYSQL ARCHITECTURE (HOW MYSQL REALLY WORKS)
 
 This step explains **what happens after you hit “Enter” on a SQL query** and *why MySQL behaves the way it does*.

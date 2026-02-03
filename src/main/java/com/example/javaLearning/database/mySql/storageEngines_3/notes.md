@@ -87,7 +87,7 @@ Disk is used only when:
 
 InnoDB stores data in:
 
-* Tablespaces (`.ibd` files)
+* Tablespaces (`.ibd` files) in disk
 
 Each table:
 

@@ -5,6 +5,8 @@ Redo Logs
 * Storage: Redo logs are stored in physical files in the file system, often grouped into a dedicated redo log tablespace or directory
 * Buffer Pool Presence: Redo logs are not stored in the primary database buffer pool (which caches data blocks from tables and indexes). Instead, changes are recorded in a separate, dedicated memory area called the redo log buffer (or redo buffer/log cache)
 * Process: When an update query runs, the changes are made in the data buffer cache, and the redo information (the record of the change) is simultaneously written to the redo log buffer. This buffer is a sequential, in-memory queue that is regularly flushed to the physical redo log files on disk
+
+
   Undo Logs
 * Storage: Undo information is stored in an undo tablespace (or undo segments/logs, depending on the database system) on disk [2].
 * Buffer Pool Presence: Unlike redo logs, undo log records are treated as standard data blocks by the database management system.

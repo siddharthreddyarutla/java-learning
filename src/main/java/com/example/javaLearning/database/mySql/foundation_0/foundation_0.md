@@ -1,11 +1,3 @@
-# 🧩 STEP 0: WHAT A DATABASE IS (FOUNDATION MINDSET)
-
-This step is about **how to think**, not syntax.
-
-If this mindset is clear, **everything else in MySQL will feel logical instead of memorized**.
-
----
-
 ## 0.1 Why Databases Exist (The Real Reason)
 
 Before databases, applications stored data in:
