@@ -30,7 +30,7 @@ public class Consumer {
       this.propertiesConfig = propertiesConfig;
     }
 
-    @KafkaListener(topics = "test_topic", groupId = "java-learning-app")
+//    @KafkaListener(topics = "test_topic", groupId = "java-learning-app")
     public void consume1(@Payload String message,
         @Header(KafkaHeaders.RECEIVED_PARTITION) String partition) {
       System.out.println(
@@ -40,7 +40,7 @@ public class Consumer {
 
     /* Depicting multi consumer instances where consumers in a single group partitions will be
     segregated accordingly*/
-    @KafkaListener(topics = "test_topic", groupId = "java-learning-app")
+//    @KafkaListener(topics = "test_topic", groupId = "java-learning-app")
     public void consume2(@Payload String message,
         @Header(KafkaHeaders.RECEIVED_PARTITION) String partition) {
       System.out.println(
@@ -49,7 +49,7 @@ public class Consumer {
     }
 
     /* Depicting multiple consumer groups */
-    @KafkaListener(topics = "test_topic", groupId = "java-learning-app-duplicate")
+//    @KafkaListener(topics = "test_topic", groupId = "java-learning-app-duplicate")
     public void consume3(@Payload String message,
         @Header(KafkaHeaders.RECEIVED_PARTITION) String partition) {
       System.out.println(
