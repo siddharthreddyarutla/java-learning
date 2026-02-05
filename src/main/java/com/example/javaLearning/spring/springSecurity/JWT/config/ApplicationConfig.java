@@ -1,6 +1,6 @@
-package com.example.javaLearning.spring.springSecurity.impl.config;
+package com.example.javaLearning.spring.springSecurity.JWT.config;
 
-import com.example.javaLearning.spring.springSecurity.impl.UserRepository;
+import com.example.javaLearning.spring.springSecurity.JWT.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

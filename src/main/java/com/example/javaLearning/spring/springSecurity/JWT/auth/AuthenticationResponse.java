@@ -1,4 +1,4 @@
-package com.example.javaLearning.spring.springSecurity.impl.auth;
+package com.example.javaLearning.spring.springSecurity.JWT.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

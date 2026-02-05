@@ -1,4 +1,4 @@
-package com.example.javaLearning.spring.springSecurity.impl;
+package com.example.javaLearning.spring.springSecurity.JWT.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

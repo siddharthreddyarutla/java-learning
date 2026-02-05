@@ -1,9 +1,9 @@
-package com.example.javaLearning.spring.springSecurity.impl.auth;
+package com.example.javaLearning.spring.springSecurity.JWT.auth;
 
-import com.example.javaLearning.spring.springSecurity.impl.ROLE;
-import com.example.javaLearning.spring.springSecurity.impl.User;
-import com.example.javaLearning.spring.springSecurity.impl.UserRepository;
-import com.example.javaLearning.spring.springSecurity.impl.config.JwtService;
+import com.example.javaLearning.spring.springSecurity.JWT.user.ROLE;
+import com.example.javaLearning.spring.springSecurity.JWT.user.User;
+import com.example.javaLearning.spring.springSecurity.JWT.user.UserRepository;
+import com.example.javaLearning.spring.springSecurity.JWT.config.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

@@ -1,6 +1,5 @@
-package com.example.javaLearning.spring.springSecurity.impl.config;
+package com.example.javaLearning.spring.springSecurity.JWT.config;
 
-import jakarta.servlet.Filter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

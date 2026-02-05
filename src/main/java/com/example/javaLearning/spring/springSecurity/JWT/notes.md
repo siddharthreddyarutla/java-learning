@@ -123,6 +123,16 @@ The secret key is used to **sign the JWT**, ensuring:
     * Server recalculates signature
     * If mismatch → token rejected
 
+How JWT Signature Verification Works
+1. Generation (Signing): The creator takes the encoded header and payload, signs them with a secret/private key using the algorithm specified in the header (e.g., HS256), and Base64Url-encodes the result to create the signature segment.
+2. Transmission: The full token (Header.Payload.Signature) is sent to the receiver.
+3. Verification (Tamper Detection):
+    * The receiver takes the received Header and Payload from the token.
+    * It recalculates the signature using the same key and algorithm.
+    * It compares the newly calculated signature with the signature appended to the token.
+4. Result: If they match, the token is untampered. If they do not match, the token has been altered, and it is rejected. 
+
+
 ### 🔹 Key takeaway
 
 > Anyone can read a JWT, but only the server can **verify** it.

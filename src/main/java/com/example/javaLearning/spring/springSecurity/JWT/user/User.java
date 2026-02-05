@@ -1,4 +1,4 @@
-package com.example.javaLearning.spring.springSecurity.impl;
+package com.example.javaLearning.spring.springSecurity.JWT.user;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

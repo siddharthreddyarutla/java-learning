@@ -1,4 +1,4 @@
-package com.example.javaLearning.spring.springSecurity.impl.config;
+package com.example.javaLearning.spring.springSecurity.JWT.config;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
