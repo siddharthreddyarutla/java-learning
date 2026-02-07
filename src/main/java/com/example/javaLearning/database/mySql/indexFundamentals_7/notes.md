@@ -48,7 +48,7 @@ Primary key index:
 
 ```
 PK B+Tree
- └── Leaf pages → FULL ROW DATA
+ └── Leaf pages → FULL 
 ```
 
 Implications:

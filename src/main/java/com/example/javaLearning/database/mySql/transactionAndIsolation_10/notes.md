@@ -32,6 +32,15 @@ A transaction is **a logical unit of work** that must be:
 MySQL guarantees **Atomicity + Durability** via logs
 **Consistency is your responsibility (schema + code)**
 
+### ACID 
+In MySQL, the ACID properties are a set of principles that ensure database transactions are processed reliably, maintaining data integrity even in cases of system failures or concurrent operations. The primary storage engine that fully supports ACID compliance is InnoDB. 
+The acronym ACID stands for: 
+* Atomicity: This property guarantees that a transaction is treated as a single, indivisible unit of work. Either all of the operations within a transaction are executed successfully, or none of them are. If any part of a transaction fails (e.g., a power outage during a multi-step bank transfer), the entire transaction is rolled back to its original state, preventing partial updates and data corruption.
+* Consistency: This ensures that a transaction brings the database from one valid state to another, adhering to all predefined rules, constraints, and integrity checks (like unique keys or "no negative balance" rules). If a transaction violates any of these rules, the entire transaction is aborted, and the database is returned to the state it was in before the transaction began.
+* Isolation: This guarantees that multiple transactions can run concurrently without interfering with each other. Each transaction is executed as if it is the only one running on the system, and changes made by one transaction are not visible to others until the transaction is successfully committed.
+* Durability: This ensures that once a transaction has been committed, its changes are permanent and will not be lost, even in the event of a system crash, power failure, or restart. This is typically achieved in MySQL through the use of transaction logs (like the ib_logfile files in InnoDB) which allow the database to recover committed changes after a failure. 
+
+
 💬 Killer line:
 
 > “Databases enforce constraints, not business logic.”
@@ -249,14 +258,3 @@ You must confidently explain:
 ✔ How deadlocks occur and are resolved
 
 If yes → **you are now database-engineer level**
-
----
-
-## 🚀 NEXT STEP
-
-Next we go **even deeper but still interview-safe**:
-
-👉 **STEP 11: MVCC (Undo Logs, Read Views, Timelines)**
-This is where most candidates fail — and you won’t.
-
-Say **“Start Step 11”** when ready 💪
