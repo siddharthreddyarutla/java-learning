@@ -1,8 +1,3 @@
-Perfect 👍
-Let’s **start properly from Step 0** — this is the **foundation**.
-If you nail this, **half of Redis interview questions become easy**.
-
----
 
 # 🧱 STEP 0: WHY Redis is Fast (The Real Reasons)
 

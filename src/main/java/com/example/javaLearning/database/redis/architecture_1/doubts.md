@@ -1,9 +1,3 @@
-Love these doubts — these are **exactly the right questions** 👌
-If you understand this clearly, Redis internals will feel *obvious*, not magical.
-
-I’ll answer **one by one**, slowly, with **mental models**, not buzzwords.
-
----
 
 # 1️⃣ Does Redis create a TCP connection for every fetch? Isn’t that slow?
 
