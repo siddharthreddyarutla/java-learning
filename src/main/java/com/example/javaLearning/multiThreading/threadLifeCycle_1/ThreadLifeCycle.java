@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.threadLifeCycle;
+package com.example.javaLearning.multiThreading.threadLifeCycle_1;
 
 public class ThreadLifeCycle {
 

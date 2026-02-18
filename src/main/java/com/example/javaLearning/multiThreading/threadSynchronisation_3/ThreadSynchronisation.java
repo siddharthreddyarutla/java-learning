@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.threadSynchronisation;
+package com.example.javaLearning.multiThreading.threadSynchronisation_3;
 
 public class ThreadSynchronisation {
 

@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.threadPriority;
+package com.example.javaLearning.multiThreading.threadPriority_2;
 
 
 import java.util.stream.IntStream;
@@ -90,9 +90,13 @@ public class ThreadPriorityClass {
         try {
           Thread.sleep(100);
         } catch (InterruptedException e) {
-          System.out.println("Thread is interrupted" + e);
+          System.out.println(
+              "Thread is interrupted by: " + Thread.currentThread().getName() + " " + e);
+          Thread.currentThread().interrupt();
         }
-        System.out.println(Thread.currentThread().getName() + " count " + i);
+        if (!Thread.currentThread().isInterrupted()) {
+          System.out.println(Thread.currentThread().getName() + " count " + i);
+        }
       });
     }
   }
