@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.threadSafety;
+package com.example.javaLearning.multiThreading.threadSafety_4;
 
 public class VolatileImpl {
 
@@ -44,7 +44,7 @@ public class VolatileImpl {
      * <p>
      * Prevents caching/optimizations that would hide updates.
      */
-    private volatile boolean flag = false;
+    private boolean flag = false;
 
     public void setFlagTrue() {
       System.out.println("Writer thread set flag to true " + Thread.currentThread().getName());

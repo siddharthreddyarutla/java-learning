@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.executorFramework.customExecutor;
+package com.example.javaLearning.multiThreading.executorFramework_7.customExecutor;
 
 import java.util.concurrent.Callable;
 
@@ -13,7 +13,7 @@ public class CustomerExecutorTaskCallable implements Callable<Boolean> {
   @Override
   public Boolean call() throws Exception {
     System.out.println("Implementing custom task.....");
-    Thread.sleep(10000);
+    Thread.sleep(sleepTime);
     return true;
   }
 }

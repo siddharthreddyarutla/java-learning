@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.executorFramework;
+package com.example.javaLearning.multiThreading.executorFramework_7;
 
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -33,7 +33,7 @@ public class ExecutorServiceImpl {
     example.executorInvokeAllTimed();
 
     System.out.println("--------------");
-    //    example.scheduledExecutorService();
+    example.scheduledExecutorService();
 
     System.out.println("--------------");
     example.cachedThreadPool();

@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.threadSafety;
+package com.example.javaLearning.multiThreading.threadSafety_4;
 
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
@@ -48,7 +48,7 @@ public class AtomicImpl {
     /**
      * One way to tackle in correct count is by using synchronized or extrinsic lock
      */
-    public synchronized void increment() {
+    public void increment() {
       atomicInteger.incrementAndGet();
     }
 

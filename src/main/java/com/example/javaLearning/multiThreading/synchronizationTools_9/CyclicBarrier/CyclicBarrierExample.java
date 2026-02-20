@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.synchronizationTools.CyclicBarrier;
+package com.example.javaLearning.multiThreading.synchronizationTools_9.CyclicBarrier;
 
 import java.util.concurrent.CyclicBarrier;
 

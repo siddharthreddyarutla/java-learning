@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.locking;
+package com.example.javaLearning.multiThreading.locking_6;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -15,13 +15,18 @@ public class DeadLock {
     private final Lock lock = new ReentrantLock();
 
     /**
-     * Here outermethod is calling innermethod but lock is acquired by outermethod where
-     * innermethod will
-     * for outermethod to complete to acquire lock but at same time outermethod waits until
-     * innermethod to complete
-     * to release lock this case is Deadlock but Reentranlock will be re entered again but
-     * unlocked the same no of times
+     * This is NOT a deadlock case.
+     * <p>
+     * ReentrantLock allows the same thread to acquire the same lock multiple times.
+     * So when outerMethod calls innerMethod (which again calls outerMethod),
+     * the lock is re-acquired by the same thread and the hold count increases.
+     * <p>
+     * This results in infinite recursive calls, eventually causing StackOverflowError,
+     * not a deadlock.
+     * <p>
+     * For each lock() call, unlock() must be called the same number of times.
      */
+
     public void outerMethod() {
       try {
         lock.lock();
@@ -38,6 +43,7 @@ public class DeadLock {
       try {
         lock.lock();
         System.out.println("In inner method");
+        outerMethod();
       } catch (Exception e) {
         System.out.println(e);
       } finally {

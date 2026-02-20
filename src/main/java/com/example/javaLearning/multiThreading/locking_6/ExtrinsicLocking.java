@@ -1,10 +1,15 @@
-package com.example.javaLearning.multiThreading.locking;
+package com.example.javaLearning.multiThreading.locking_6;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ExtrinsicLocking {
+
+  private static final Logger log = LoggerFactory.getLogger(ExtrinsicLocking.class);
 
   public static void main(String[] args) {
 
@@ -32,7 +37,7 @@ public class ExtrinsicLocking {
           Thread.currentThread().getName() + " attempting to withdraw money of " + amount);
 
       try {
-        if (lock.tryLock(1000, TimeUnit.MILLISECONDS)) {
+        if (lock.tryLock(3000, TimeUnit.MILLISECONDS)) {
           try {
             if (balance >= amount) {
               System.out.println(

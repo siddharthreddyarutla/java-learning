@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.synchronizationTools.CountDownLatch;
+package com.example.javaLearning.multiThreading.synchronizationTools_9.CountDownLatch;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;

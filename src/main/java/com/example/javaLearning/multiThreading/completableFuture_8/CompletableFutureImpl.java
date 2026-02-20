@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.completableFuture;
+package com.example.javaLearning.multiThreading.completableFuture_8;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;

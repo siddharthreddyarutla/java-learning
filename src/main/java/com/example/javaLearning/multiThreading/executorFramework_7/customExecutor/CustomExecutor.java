@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.executorFramework.customExecutor;
+package com.example.javaLearning.multiThreading.executorFramework_7.customExecutor;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

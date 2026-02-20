@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.locking;
+package com.example.javaLearning.multiThreading.locking_6;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
@@ -30,9 +30,9 @@ public class ReadAndWriteLock {
       }
     };
 
-    Thread thread = new Thread(readTask, "Thread read 1");
-    Thread thread2 = new Thread(readTask, "Thread read 2");
-    Thread thread3 = new Thread(writeTask, "Thread write");
+    Thread thread = new Thread(readTask, "read 1");
+    Thread thread2 = new Thread(readTask, "read 2");
+    Thread thread3 = new Thread(writeTask, "write");
 
     thread.start();
     thread2.start();

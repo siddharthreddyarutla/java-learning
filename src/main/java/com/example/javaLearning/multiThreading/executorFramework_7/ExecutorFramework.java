@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.executorFramework;
+package com.example.javaLearning.multiThreading.executorFramework_7;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -11,10 +11,10 @@ public class ExecutorFramework {
     ExecutorFrameworkExample executorFrameworkExample = new ExecutorFrameworkExample();
 
     // implementing one by one with single thread execution
-    executorFrameworkExample.SynchronousImpl();
+//    executorFrameworkExample.SynchronousImpl();
 
     // Implementing multi threading by creating and managing threads
-    executorFrameworkExample.multiThreading();
+//    executorFrameworkExample.multiThreading();
 
     // Implementing multi threading using executors framework
     executorFrameworkExample.multiThreadingUsingExecutorFramework();

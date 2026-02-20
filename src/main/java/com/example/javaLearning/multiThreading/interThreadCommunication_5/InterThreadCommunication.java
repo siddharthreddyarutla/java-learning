@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.interThreadCommunication;
+package com.example.javaLearning.multiThreading.interThreadCommunication_5;
 
 public class InterThreadCommunication {
 

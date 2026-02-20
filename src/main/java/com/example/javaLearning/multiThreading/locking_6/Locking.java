@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.locking;
+package com.example.javaLearning.multiThreading.locking_6;
 
 
 public class Locking {

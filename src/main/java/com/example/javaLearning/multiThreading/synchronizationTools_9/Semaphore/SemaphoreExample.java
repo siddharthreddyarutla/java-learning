@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.synchronizationTools.Semaphore;
+package com.example.javaLearning.multiThreading.synchronizationTools_9.Semaphore;
 
 import java.util.ArrayList;
 import java.util.List;

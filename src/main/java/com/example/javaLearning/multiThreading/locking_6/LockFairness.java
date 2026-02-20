@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.locking;
+package com.example.javaLearning.multiThreading.locking_6;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -25,10 +25,10 @@ public class LockFairness {
   }
 
   public static class FairnessLock {
-    private final Lock unFairLock = new ReentrantLock(true);
+    private final Lock fairLock = new ReentrantLock(true);
 
     public void accessResource() {
-      unFairLock.lock();
+      fairLock.lock();
       try {
         System.out.println(Thread.currentThread().getName() + " acquired lock");
         Thread.sleep(1000);
@@ -36,7 +36,7 @@ public class LockFairness {
         Thread.currentThread().interrupt();
       } finally {
         System.out.println(Thread.currentThread().getName() + " lock released ");
-        unFairLock.unlock();
+        fairLock.unlock();
       }
     }
   }

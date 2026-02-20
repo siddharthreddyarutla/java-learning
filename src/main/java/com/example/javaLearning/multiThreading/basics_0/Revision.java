@@ -1,4 +1,4 @@
-package com.example.javaLearning.multiThreading.basics;
+package com.example.javaLearning.multiThreading.basics_0;
 
 
 import java.util.concurrent.Callable;
