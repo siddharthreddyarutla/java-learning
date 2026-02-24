@@ -1,4 +1,4 @@
-package com.example.javaLearning.kafka.consumer.impl;
+package com.example.javaLearning.kafka.consumer_5.impl;
 
 import com.example.javaLearning.kafka.KafkaPropertiesConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;

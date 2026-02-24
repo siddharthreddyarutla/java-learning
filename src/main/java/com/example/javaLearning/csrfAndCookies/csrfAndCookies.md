@@ -1,8 +1,3 @@
-Excellent 👏 — this is a very important and highly asked **security** topic in both backend (Spring, Java) and web interviews.
-Let’s break it down **clearly, step-by-step**, so you understand both **CSRF** and **Cookies** — how they work, why they matter, and when/how they are generated.
-
----
-
 ## 🍪 **1. Cookies — what & why**
 
 ### 🔹 What is a Cookie?

@@ -1,4 +1,4 @@
-package com.example.javaLearning.kafka.producer.Impl;
+package com.example.javaLearning.kafka.producer_4.Impl;
 
 import com.example.javaLearning.kafka.KafkaPropertiesConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;

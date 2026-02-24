@@ -1,4 +1,4 @@
-package com.example.javaLearning.kafka.producer.Impl;
+package com.example.javaLearning.kafka.producer_4.Impl;
 
 import com.example.javaLearning.kafka.KafkaPropertiesConfig;
 import org.springframework.boot.SpringApplication;
@@ -20,7 +20,7 @@ public class Producer {
   }
 
   @Service
-  public class ProduceEvent {
+  public static class ProduceEvent {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
 
